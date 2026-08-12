@@ -3,133 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pepe & Ale — Fitness</title>
+<meta name="theme-color" content="#050b14">
+<title>PEPE — Personal Fitness</title>
 <style>
-:root{--bg:#080909;--card:#121313;--card2:#171817;--gold:#d7a957;--gold2:#f0c978;--text:#f5f3ed;--muted:#9c9b95;--line:#292a27;--green:#8fd3a5}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#292319 0,#0b0b0b 38%,#080909 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
-button{font:inherit} .app{max-width:520px;margin:auto;padding:22px 16px 40px}.brand{text-align:center;padding:12px 0 22px}.brand .mark{font-size:12px;letter-spacing:4px;color:var(--gold);font-weight:800}.brand h1{font-size:30px;margin:7px 0 3px;letter-spacing:-1px}.brand p{margin:0;color:var(--muted);font-size:13px}
-.screen{display:none}.screen.active{display:block}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.back{background:none;border:0;color:var(--muted);font-size:26px;cursor:pointer}.title{font-weight:800;font-size:20px}.pill{border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--gold2);font-size:11px;font-weight:800}
-.perfiles{display:grid;gap:14px}.perfile{position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#171816,#101110);border-radius:22px;padding:22px;cursor:pointer;transition:.2s}.perfile:hover{transform:translateY(-2px);border-color:#5b492b}.perfile .avatar{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#24231f;color:var(--gold2);font-weight:900;font-size:21px;border:1px solid #4c402d}.perfile h2{margin:16px 0 4px}.perfile p{margin:0;color:var(--muted);font-size:13px}.perfile .arrow{position:absolute;right:22px;top:50%;font-size:28px;color:var(--gold);transform:translateY(-50%)}
-.note{margin-top:18px;background:#101514;border:1px solid #1e3027;color:#b6c4ba;border-radius:16px;padding:13px 14px;font-size:12px;line-height:1.45}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px}.stat{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:12px}.stat b{display:block;font-size:15px}.stat span{display:block;color:var(--muted);font-size:10px;margin-top:4px}
-.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.choice button,.meal{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:18px}.choice button{padding:18px;text-align:left;cursor:pointer}.choice button.active{border-color:var(--gold);box-shadow:0 0 0 1px #806331 inset}.choice strong{display:block;color:var(--gold2);font-size:13px}.choice small{color:var(--muted)}
-.section-title{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:900;margin:20px 0 9px}.meals{display:grid;gap:10px}.meal{padding:16px;cursor:pointer}.meal-head{display:flex;gap:12px;align-items:center}.time{font-weight:900;color:var(--gold2);font-size:12px;min-width:47px}.meal h3{font-size:14px;margin:0}.meal .summary{color:var(--muted);font-size:11px;margin-top:5px;line-height:1.35}.details{display:none;margin-top:13px;padding-top:13px;border-top:1px solid var(--line)}.meal.open .details{display:block}.details ul{margin:0;padding-left:18px}.details li{margin:6px 0;font-size:12px;line-height:1.35}.details .label{color:var(--gold2);font-weight:800}
-.tracker{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:14px}.tracker-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:12px}.tracker-row:last-child{border:0}.tracker-row span{color:var(--muted)}.check{accent-color:var(--gold);width:17px;height:17px}
-.footer{margin-top:25px;text-align:center;color:#686861;font-size:10px;line-height:1.5}
-.hidden{display:none!important}
+:root{
+  --bg:#050910;--bg2:#08111d;--card:rgba(10,21,35,.82);--line:#15314c;
+  --blue:#1d9bf0;--cyan:#35d9ff;--text:#eef7ff;--muted:#7891a7;
+  --shadow:0 20px 55px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;color:var(--text);
+ font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ background:
+ radial-gradient(circle at 20% 0%,rgba(29,155,240,.20),transparent 34%),
+ radial-gradient(circle at 100% 20%,rgba(53,217,255,.10),transparent 30%),
+ linear-gradient(145deg,#03070c,#07121f 55%,#03070c);
+}
+button{font:inherit}
+.app{max-width:560px;margin:auto;padding:22px 16px 42px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.logo{font-weight:900;letter-spacing:3px;font-size:12px;color:var(--cyan)}
+.status{display:flex;align-items:center;gap:6px;color:#7fa1b9;font-size:10px}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan)}
+.hero{
+ padding:22px;border:1px solid var(--line);border-radius:25px;
+ background:linear-gradient(145deg,rgba(13,31,50,.92),rgba(6,14,24,.82));
+ box-shadow:var(--shadow);position:relative;overflow:hidden;margin-bottom:16px
+}
+.hero:after{content:"";position:absolute;width:170px;height:170px;border:1px solid rgba(53,217,255,.14);border-radius:50%;right:-70px;top:-75px}
+.kicker{font-size:10px;letter-spacing:2px;color:var(--blue);font-weight:900}
+.hero h1{font-size:34px;margin:6px 0 2px;letter-spacing:-1.5px}
+.hero p{margin:0;color:var(--muted);font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:20px}
+.stat{background:rgba(3,9,16,.45);border:1px solid var(--line);border-radius:14px;padding:10px}
+.stat strong{display:block;font-size:14px}.stat span{font-size:9px;color:var(--muted)}
+.nav{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:16px 0}
+.nav button{
+ border:1px solid var(--line);border-radius:20px;padding:20px 15px;
+ color:var(--text);background:var(--card);cursor:pointer;text-align:left;
+ transition:.18s;box-shadow:var(--shadow)
+}
+.nav button:hover,.nav button.active{border-color:var(--blue);box-shadow:0 0 0 1px rgba(29,155,240,.25) inset,0 18px 45px rgba(0,0,0,.35)}
+.icon{font-size:23px;margin-bottom:10px}.nav strong{display:block;font-size:14px}.nav small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.screen{display:none}.screen.active{display:block}
+.topbar{display:flex;align-items:center;gap:12px;margin:8px 0 14px}
+.back{border:1px solid var(--line);background:var(--card);color:var(--text);width:38px;height:38px;border-radius:12px;cursor:pointer;font-size:24px}
+.page-title{font-size:20px;font-weight:900}.page-sub{font-size:10px;color:var(--muted);margin-top:2px}
+.day-tabs{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:14px}
+.day-tabs button{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:15px;padding:13px 9px;cursor:pointer;font-size:10px;font-weight:900}
+.day-tabs button.active{color:var(--cyan);border-color:var(--blue);background:linear-gradient(135deg,rgba(29,155,240,.13),rgba(10,21,35,.9))}
+.label{font-size:10px;letter-spacing:1.6px;color:var(--cyan);font-weight:900;margin:18px 2px 8px}
+.meals{display:grid;gap:9px}
+.meal{
+ border:1px solid var(--line);background:var(--card);border-radius:18px;
+ padding:15px;cursor:pointer;transition:.15s
+}
+.meal:hover{border-color:#1f5d83}
+.mealhead{display:flex;gap:12px}
+.time{color:var(--cyan);font-weight:900;font-size:11px;min-width:48px}
+.mealtitle{font-size:13px;font-weight:900}.summary{color:var(--muted);font-size:10px;line-height:1.4;margin-top:4px}
+.details{display:none;border-top:1px solid var(--line);margin-top:12px;padding-top:11px}
+.meal.open .details{display:block}
+.details ul{margin:0;padding-left:17px}.details li{font-size:11px;line-height:1.5;margin:6px 0}
+.details b{color:var(--cyan)}
+.note{margin-top:14px;padding:13px;border:1px solid #12374d;background:rgba(7,25,39,.55);border-radius:16px;color:#91adbf;font-size:10px;line-height:1.5}
+.training-placeholder{
+ border:1px dashed #1b4a68;border-radius:20px;padding:28px 20px;text-align:center;
+ background:rgba(7,20,33,.55)
+}
+.training-placeholder .big{font-size:35px}.training-placeholder h2{font-size:17px;margin:9px 0 5px}.training-placeholder p{color:var(--muted);font-size:11px;line-height:1.5;margin:0}
+.checklist{margin-top:14px;border:1px solid var(--line);background:var(--card);border-radius:18px;padding:14px}
+.check{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:9px 0;font-size:11px}
+.check:last-child{border:0}.check span{color:var(--muted)}input{accent-color:var(--blue);width:17px;height:17px}
+.footer{text-align:center;color:#4f6678;font-size:9px;margin-top:25px;line-height:1.5}
+@media(max-width:390px){.nav{grid-template-columns:1fr}.stats{gap:6px}}
 </style>
 </head>
 <body>
-<div class="app">
-  <div class="brand">
-    <div class="mark">PERSONAL FITNESS</div>
-    <h1>PEPE <span style="color:var(--gold)">&</span> ALE</h1>
-    <p>Plan de alimentación • entrenamiento • seguimiento</p>
+<main class="app">
+
+<header class="header">
+  <div class="logo">PEPE // FITNESS SYSTEM</div>
+  <div class="status"><span class="dot"></span> ACTIVE</div>
+</header>
+
+<section id="home" class="screen active">
+  <div class="hero">
+    <div class="kicker">PERSONAL PROFILE</div>
+    <h1>PEPE</h1>
+    <p>Plan personalizado · Alimentación & entrenamiento</p>
+    <div class="stats">
+      <div class="stat"><strong>86,55 kg</strong><span>Peso inicial</span></div>
+      <div class="stat"><strong>1,86 m</strong><span>Altura</span></div>
+      <div class="stat"><strong>4×</strong><span>Entreno / semana</span></div>
+    </div>
   </div>
 
-  <section id="home" class="screen active">
-    <div class="section-title">Elige tu perfil</div>
-    <div class="perfiles">
-      <div class="perfile" onclick="openProfile('pepe')">
-        <div class="avatar">P</div><h2>Pepe</h2>
-        <p>86,55 kg • 186 cm • 30 godina • trening 4× nedeljno</p>
-        <div class="arrow">›</div>
-      </div>
-      <div class="perfile" onclick="openProfile('ale')">
-        <div class="avatar">A</div><h2>Alessandro</h2>
-        <p>Elige tu perfil da vidiš njegov plan</p>
-        <div class="arrow">›</div>
-      </div>
-    </div>
-    <div class="note">💡 Cada uno tiene su propio plan y sus propias cantidades. Los alimentos pueden ser similares, pero las cantidades y el entrenamiento son individuales.</div>
-  </section>
+  <div class="nav">
+    <button class="active" onclick="openSection('food')">
+      <div class="icon">◈</div><strong>ALIMENTACIÓN</strong><small>Plan diario y cantidades</small>
+    </button>
+    <button onclick="openSection('training')">
+      <div class="icon">◉</div><strong>ENTRENAMIENTO</strong><small>Rutina y seguimiento</small>
+    </button>
+  </div>
 
-  <section id="perfile" class="screen">
-    <div class="top"><button class="back" onclick="goHome()">‹</button><div class="title" id="perfileTitle">Pepe</div><div class="pill" id="perfileWeight">86,55 kg</div></div>
-    <div class="stats" id="stats"></div>
-    <div class="choice">
-      <button id="trainingBtn" class="active" onclick="setDay('training')"><strong>🏋️ DÍA DE ENTRENAMIENTO</strong><small>Entrenamiento a las 13:00</small></button>
-      <button id="restBtn" onclick="setDay('rest')"><strong>🛋️ DÍA DE DESCANSO</strong><small>Sin entrenamiento</small></button>
-    </div>
-    <div id="dayContent"></div>
-    <div class="footer">Plan reformateado a partir del mensaje de la entrenadora. Se mantienen las cantidades y las alternativas.</div>
-  </section>
-</div>
+  <div class="note">Objetivo: construir músculo, reducir grasa y crear una alimentación sostenible. El plan de alimentación mostrado aquí mantiene las cantidades y alternativas indicadas por tu entrenadora.</div>
+</section>
+
+<section id="food" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="openSection('home')">‹</button>
+    <div><div class="page-title">Alimentación</div><div class="page-sub">12/08/2026 → 18/08/2026 · 4 días de entrenamiento</div></div>
+  </div>
+
+  <div class="day-tabs">
+    <button id="trainTab" class="active" onclick="setDay('training')">🏋️ DÍA DE ENTRENAMIENTO</button>
+    <button id="restTab" onclick="setDay('rest')">◌ DÍA DE DESCANSO</button>
+  </div>
+
+  <div id="foodContent"></div>
+
+  <div class="checklist">
+    <div class="label" style="margin-top:0">DAILY CHECK</div>
+    <label class="check"><span>💧 Agua · 4 L</span><input type="checkbox"></label>
+    <label class="check"><span>🧂 Sal total · 5 g</span><input type="checkbox"></label>
+    <label class="check"><span>💊 Creatina · 5 g</span><input type="checkbox"></label>
+    <label class="check"><span>🍽️ Todas las comidas</span><input type="checkbox"></label>
+  </div>
+</section>
+
+<section id="training" class="screen">
+  <div class="topbar">
+    <button class="back" onclick="openSection('home')">‹</button>
+    <div><div class="page-title">Entrenamiento</div><div class="page-sub">Tu rutina personalizada</div></div>
+  </div>
+  <div class="training-placeholder">
+    <div class="big">◉</div>
+    <h2>Rutina próximamente</h2>
+    <p>Esta sección está preparada. Cuando recibamos la rutina de tu entrenadora, añadiremos ejercicios, series, repeticiones, descansos y seguimiento sin cambiar el diseño de la aplicación.</p>
+  </div>
+</section>
+
+<footer class="footer">PEPE // PERSONAL FITNESS · Versión inicial</footer>
+</main>
 
 <script>
-const data={
- pepe:{
-  name:"Pepe",weight:"86,55 kg",stats:["186 cm","30 godina","4× / nedeljno"],
-  training:[
-   ["09:00","OBROK 1","Doručak • izaberi jednu od 2 opcije",[
-    "<span class='label'>Opcija A:</span> café (opcional); 200 ml bebida de almendras Zero; 90 g pan de cereales sin gluten (3 kriške), tostado; 100 g tomate; 5 g AOVE; 3 jaja + 120 g belanaca; 150 g piña en su jugo.",
-    "<span class='label'>Opcija B — fit kolač:</span> 3 jaja + 120 g belanaca; 60 g ovsenih pahuljica ili ovseno brašno bez glutena; 100 g banane ili jabuke; cimet; 5 g stevije; bademov napitak Zero po potrebi. Peći 180°C oko 20–25 min. Odozgo 15 g chocolate negro, mínimo 85% de cacao.",
-    "<span class='label'>Suplementos:</span> 2 perlas de Omega-3 + 1 cápsula de vitamina C."
-   ]],
-   ["12:00","PRE-TRENING","30 g ISO • 250 ml bademovog Zero • 40 g corn flakes bez šećera / COR",[
-    "<span class='label'>Suplementos:</span> 1.500 mg L-karnitina; 1 kapsula sinefrina; 600 mg NAC; 600 mg kalijuma Boi-K; 1 g soli."
-   ]],
-   ["13:00","TRENING","Prema rutini koju šalje trenerka",[]],
-   ["15:00","OBROK 2","Post-trening • povrće + protein + ugljeni hidrat",[
-    "125 g salate 4 sezone ili salteado od povrća.",
-    "<span class='label'>Hidratos — elige uno:</span> 80 g belog pirinča ili bezglutenske paste, mereno suvo (oko 200 g kuvano), <b>ili</b> 350 g patata/boniato, mereno kuvano.",
-    "<span class='label'>Proteína — elige uno:</span> 180 g nemasnog crvenog mesa / pilećih ili purećih prsa / nemasnog lungića, mereno kuvano.",
-    "5 g AOVE.",
-    "<span class='label'>Suplementos:</span> 5 g kreatin monohidrata + 375 mg magnezijuma."
-   ]],
-   ["18:00","OBROK 3","30 g tortitas de arroz ili tostadas ligeras sin gluten + protein + 100 g arándanos",[
-    "<span class='label'>Proteína — elige uno:</span> 100 g pechuga de pollo/pavo; ili 100 g jamón cocido (mínimo 92% de carne magra); ili 80 g jamón curado sin azúcar."
-   ]],
-   ["21:00","OBROK 4","Protein + povrće + 250 g sirovog patata/boniato + 5 g AOVE",[
-    "<span class='label'>Proteína — elige uno:</span> 180 g pechuga de pollo/pavo ili nemasnog lungića; 200 g bele ribe; 170 g lososa; ili 2 jaja + 200 g belanaca.",
-    "150 g espárragos, mereno kuvano (iz tegle), ili salteado od povrća.",
-    "250 g patata/boniato, mereno sirovo (oko 200 g kuvano).",
-    "5 g AOVE."
-   ]]
-  ],
-  rest:[
-   ["09:00","OBROK 1","Doručak • izaberi jednu od 2 opcije",[
-    "<span class='label'>Opcija A:</span> café (opcional); 200 ml bademovog Zero; 70 g pan de cereales sin gluten (2 kriške), tostado; 100 g tomate; 5 g AOVE; 3 jaja + 120 g belanaca; 100 g ananasa.",
-    "<span class='label'>Opcija B — fit kolač:</span> 3 jaja + 120 g belanaca; 40 g ovsenih pahuljica ili ovseno brašno bez glutena; 100 g jabuke; cimet; 5 g stevije; bademov napitak Zero po potrebi. Peći 180°C oko 20–25 min. Odozgo 15 g chocolate negro, mínimo 85% de cacao.",
-    "<span class='label'>Suplementos:</span> 2 perlas de Omega-3 + 1 cápsula de vitamina C."
-   ]],
-   ["14:00","OBROK 2","Povrće + protein + manja količina ugljenih hidrata",[
-    "125 g salate 4 sezone ili salteado od povrća.",
-    "<span class='label'>Hidratos — elige uno:</span> 60 g belog pirinča ili bezglutenske paste, mereno suvo (oko 150 g kuvano), <b>ili</b> 300 g patata/boniato, mereno kuvano.",
-    "180 g nemasnog crvenog mesa / pilećih ili purećih prsa / nemasnog lungića, mereno kuvano.",
-    "5 g AOVE.",
-    "<span class='label'>Suplementos:</span> 5 g kreatin monohidrata + 375 mg magnezijuma."
-   ]],
-   ["17:00","OBROK 3","Bizcocho fit",[
-    "150 g cottage sira; 1 jaje + 120 g belanaca; 35 g ovsenih pahuljica bez glutena; 80 g jabuke ili crvenog voća; cimet; 5 g stevije; bademov napitak Zero po potrebi.",
-    "Sve umutiti/blendirati i peći 180°C oko 20–25 min."
-   ]],
-   ["21:00","OBROK 4","Protein + povrće + ugljeni hidrat + 5 g AOVE",[
-    "<span class='label'>Proteína — elige uno:</span> 180 g pechuga de pollo/pavo ili nemasnog lungića; 200 g bele ribe; 170 g lososa; ili 2 jaja + 200 g belanaca.",
-    "150 g espárragos, mereno kuvano, ili salteado od povrća.",
-    "<span class='label'>Hidratos — elige uno:</span> 40 g pirinča ili bezglutenske paste, mereno suvo (oko 100 g kuvano), <b>ili</b> 200 g patata/boniato, mereno kuvano.",
-    "5 g AOVE."
-   ]]
-  ]
- },
- ale:{name:"Alessandro",weight:"—",stats:["Datos","todavía no","actualizados"],training:[],rest:[]}
-};
+const plan = {
+training:[
+["09:00","COMIDA 1","Desayuno · elige una opción",[
+"<b>Opción A:</b> Café (opcional); 200 ml bebida de almendras Zero; 90 g pan de cereales sin gluten (3 rebanadas), tostado; 100 g tomate; 5 g AOVE; 3 huevos + 120 g claras; 150 g piña en su jugo.",
+"<b>Opción B — Bizcocho fit:</b> 3 huevos + 120 g claras; 60 g copos de avena o harina de avena sin gluten; 100 g plátano o manzana; canela; 5 g stevia en polvo; bebida de almendras Zero si hace falta para textura. Batir y hornear a 180 °C unos 20–25 min. Añadir por encima 15 g chocolate negro mínimo 85 % cacao.",
+"<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
+]],
+["12:00","PRE-ENTRENO","30 g ISO · 250 ml bebida de almendras Zero · 40 g copos de maíz sin azúcar o COR",[
+"<b>Suplementos:</b> 1.500 mg L-carnitina; 1 cápsula sinefrina; 600 mg NAC; 600 mg Potasio Boi-K; 1 g sal."
+]],
+["13:00","ENTRENAMIENTO","Entrenamiento",["La rutina de entrenamiento se añadirá cuando esté disponible."]],
+["15:00","COMIDA 2","Post-entreno · verdura + hidratos + proteína",[
+"125 g ensalada 4 estaciones o salteado de verduras.",
+"<b>Hidratos — elegir uno:</b> 80 g arroz blanco o pasta sin gluten pesado en seco (aprox. 200 g cocido) <b>o</b> 350 g patata/boniato pesado en cocido.",
+"<b>Proteína — elegir uno:</b> 180 g carne roja magra, pechuga de pollo/pavo o lomo magro pesado en cocido.",
+"5 g AOVE.",
+"<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
+]],
+["18:00","COMIDA 3","Tortitas/tostadas + proteína + fruta",[
+"30 g tortitas de arroz o tostadas ligeras sin gluten.",
+"<b>Proteína — elegir uno:</b> 100 g pechuga de pollo/pavo; 100 g jamón cocido mínimo 92 % carne magra; o 80 g jamón curado sin azúcar.",
+"100 g arándanos."
+]],
+["21:00","COMIDA 4","Proteína + verdura + patata/boniato",[
+"<b>Proteína — elegir uno:</b> 180 g pechuga de pollo/pavo o lomo magro; 200 g pescado blanco; 170 g lomos de salmón; o 2 huevos + 200 g claras.",
+"150 g espárragos pesados en cocido (bote) o salteado de verduras.",
+"250 g patata/boniato pesado en crudo (aprox. 200 g cocido).",
+"5 g AOVE."
+]]
+],
+rest:[
+["09:00","COMIDA 1","Desayuno · elige una opción",[
+"<b>Opción A:</b> Café (opcional); 200 ml bebida de almendras Zero; 70 g pan de cereales sin gluten (2 rebanadas), tostado; 100 g tomate; 5 g AOVE; 3 huevos + 120 g claras; 100 g piña en su jugo.",
+"<b>Opción B — Bizcocho fit:</b> 3 huevos + 120 g claras; 40 g copos de avena o harina de avena sin gluten; 100 g manzana; canela; 5 g stevia en polvo; bebida de almendras Zero si hace falta para textura. Batir y hornear a 180 °C unos 20–25 min. Añadir por encima 15 g chocolate negro mínimo 85 % cacao.",
+"<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
+]],
+["14:00","COMIDA 2","Verdura + proteína + hidratos",[
+"125 g ensalada 4 estaciones o salteado de verduras.",
+"<b>Hidratos — elegir uno:</b> 60 g arroz blanco o pasta sin gluten pesado en seco (aprox. 150 g cocido) <b>o</b> 300 g patata/boniato pesado en cocido.",
+"180 g carne roja magra, pechuga de pollo/pavo o lomo magro pesado en cocido.",
+"5 g AOVE.",
+"<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
+]],
+["17:00","COMIDA 3","Bizcocho fit",[
+"150 g cottage; 1 huevo + 120 g claras; 35 g copos de avena sin gluten; 80 g manzana o frutos rojos; canela; 5 g stevia en polvo; bebida de almendras Zero por textura.",
+"Batir y hornear a 180 °C unos 20–25 min."
+]],
+["21:00","COMIDA 4","Proteína + verdura + hidratos",[
+"<b>Proteína — elegir uno:</b> 180 g pechuga de pollo/pavo o lomo magro; 200 g pescado blanco; 170 g lomos de salmón; o 2 huevos + 200 g claras.",
+"150 g espárragos pesados en cocido (bote) o salteado de verduras.",
+"<b>Hidratos — elegir uno:</b> 40 g arroz o pasta sin gluten pesado en seco (aprox. 100 g cocido) <b>o</b> 200 g patata/boniato pesado en cocido.",
+"5 g AOVE."
+]]
+]};
 
-let current="pepe",day="training";
-function openProfile(p){current=p;document.getElementById("home").classList.remove("active");document.getElementById("perfile").classList.add("active");renderProfile()}
-function goHome(){document.getElementById("perfile").classList.remove("active");document.getElementById("home").classList.add("active")}
-function setDay(d){day=d;document.getElementById("trainingBtn").classList.toggle("active",d==="training");document.getElementById("restBtn").classList.toggle("active",d==="rest");renderDay()}
-function renderProfile(){
- const p=data[current]; document.getElementById("perfileTitle").textContent=p.name; document.getElementById("perfileWeight").textContent=p.weight;
- document.getElementById("stats").innerHTML=p.stats.map(x=>`<div class="stat"><b>${x}</b><span>perfil</span></div>`).join("");
- renderDay()
+let currentDay="training";
+
+function openSection(id){
+ document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
 }
-function renderDay(){
- const p=data[current], arr=p[day];
- const el=document.getElementById("dayContent");
- if(!arr.length){el.innerHTML=`<div class="note">Aleov plan todavía nije dodat. Cuando la entrenadora envíe sus datos y su plan actualizados, podremos añadir aquí sus cantidades y su entrenamiento.</div>`;return}
- el.innerHTML=`<div class="section-title">${day==="training"?"Plan de alimentación — día de entrenamiento":"Plan de alimentación — día de descanso"}</div><div class="meals">${arr.map((m,i)=>`<div class="meal" onclick="this.classList.toggle('open')"><div class="meal-head"><div class="time">${m[0]}</div><div><h3>${m[1]}</h3><div class="summary">${m[2]}</div></div></div><div class="details"><ul>${m[3].map(x=>`<li>${x}</li>`).join("")}</ul></div></div>`).join("")}</div><div class="tracker"><div class="section-title" style="margin-top:0">Recordatorio diario</div><label class="tracker-row"><span>💧 Agua — 4 L</span><input class="check" type="checkbox"></label><label class="tracker-row"><span>🧂 Sal total — 5 g</span><input class="check" type="checkbox"></label><label class="tracker-row"><span>💪 Kreatin — 5 g</span><input class="check" type="checkbox"></label><label class="tracker-row"><span>🍽️ Todas las comidas completadas</span><input class="check" type="checkbox"></label></div>`;
+function setDay(day){
+ currentDay=day;
+ document.getElementById("trainTab").classList.toggle("active",day==="training");
+ document.getElementById("restTab").classList.toggle("active",day==="rest");
+ renderFood();
 }
+function renderFood(){
+ const arr=plan[currentDay];
+ document.getElementById("foodContent").innerHTML=
+ `<div class="label">${currentDay==="training"?"PLAN · DÍA DE ENTRENAMIENTO":"PLAN · DÍA DE DESCANSO"}</div>
+ <div class="meals">${arr.map((m,i)=>`
+ <article class="meal" onclick="this.classList.toggle('open')">
+  <div class="mealhead"><div class="time">${m[0]}</div><div><div class="mealtitle">${m[1]}</div><div class="summary">${m[2]}</div></div></div>
+  <div class="details"><ul>${m[3].map(x=>`<li>${x}</li>`).join("")}</ul></div>
+ </article>`).join("")}</div>`;
+}
+renderFood();
 </script>
 </body>
 </html>
