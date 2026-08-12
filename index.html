@@ -76,6 +76,19 @@ button{font:inherit}
 .checklist{margin-top:14px;border:1px solid var(--line);background:var(--card);border-radius:18px;padding:14px}
 .check{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:9px 0;font-size:11px}
 .check:last-child{border:0}.check span{color:var(--muted)}input{accent-color:var(--blue);width:17px;height:17px}
+
+.daily-card{margin-top:14px;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:15px;box-shadow:var(--shadow)}
+.daily-head{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
+.today-label{color:var(--muted);font-size:9px;margin-top:4px;text-transform:uppercase;letter-spacing:.8px}
+.score{color:var(--cyan);font-size:22px;font-weight:950}
+.progress-track{height:7px;border-radius:999px;background:#07101a;border:1px solid #123047;overflow:hidden;margin:12px 0 14px}
+.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));box-shadow:0 0 16px rgba(53,217,255,.45);transition:.25s}
+.daily-section-title{font-size:9px;letter-spacing:1.4px;color:var(--blue);font-weight:950;margin:14px 0 4px}
+.history-title{font-size:9px;letter-spacing:1.5px;color:var(--cyan);font-weight:950;margin:17px 0 8px}
+.history{display:grid;gap:6px}
+.history-row{display:flex;align-items:center;justify-content:space-between;padding:8px 9px;border:1px solid #10263a;border-radius:11px;background:rgba(3,10,17,.38);font-size:10px}
+.history-row span{color:var(--muted)}
+.history-score{color:var(--cyan);font-weight:900}
 .footer{text-align:center;color:#4f6678;font-size:9px;margin-top:25px;line-height:1.5}
 @media(max-width:390px){.nav{grid-template-columns:1fr}.stats{gap:6px}}
 </style>
@@ -125,12 +138,34 @@ button{font:inherit}
 
   <div id="foodContent"></div>
 
-  <div class="checklist">
-    <div class="label" style="margin-top:0">DAILY CHECK</div>
-    <label class="check"><span>💧 Agua · 4 L</span><input type="checkbox"></label>
-    <label class="check"><span>🧂 Sal total · 5 g</span><input type="checkbox"></label>
-    <label class="check"><span>💊 Creatina · 5 g</span><input type="checkbox"></label>
-    <label class="check"><span>🍽️ Todas las comidas</span><input type="checkbox"></label>
+  <div class="daily-card">
+    <div class="daily-head">
+      <div>
+        <div class="label" style="margin:0">DAILY CHECK</div>
+        <div id="todayLabel" class="today-label"></div>
+      </div>
+      <div class="score" id="scoreText">0%</div>
+    </div>
+
+    <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+
+    <div class="daily-section-title">🍽️ ALIMENTACIÓN</div>
+    <label class="check"><span>Desayuno</span><input class="daily-check" data-key="breakfast" type="checkbox"></label>
+    <label class="check"><span>Pre-entreno</span><input class="daily-check" data-key="preworkout" type="checkbox"></label>
+    <label class="check"><span>Comida post-entreno</span><input class="daily-check" data-key="lunch" type="checkbox"></label>
+    <label class="check"><span>Merienda</span><input class="daily-check" data-key="snack" type="checkbox"></label>
+    <label class="check"><span>Cena</span><input class="daily-check" data-key="dinner" type="checkbox"></label>
+
+    <div class="daily-section-title">💧 HÁBITOS</div>
+    <label class="check"><span>Agua · 4 L</span><input class="daily-check" data-key="water" type="checkbox"></label>
+    <label class="check"><span>Sal total · 5 g</span><input class="daily-check" data-key="salt" type="checkbox"></label>
+    <label class="check"><span>Creatina · 5 g</span><input class="daily-check" data-key="creatine" type="checkbox"></label>
+
+    <div class="daily-section-title">🏋️ ENTRENAMIENTO</div>
+    <label class="check"><span>Entrenamiento completado</span><input class="daily-check" data-key="workout" type="checkbox"></label>
+
+    <div class="history-title">HISTORIAL</div>
+    <div id="history" class="history"></div>
   </div>
 </section>
 
@@ -228,7 +263,60 @@ function renderFood(){
   <div class="details"><ul>${m[3].map(x=>`<li>${x}</li>`).join("")}</ul></div>
  </article>`).join("")}</div>`;
 }
+
+const CHECK_KEYS = ["breakfast","preworkout","lunch","snack","dinner","water","salt","creatine","workout"];
+const CHECK_LABELS = {
+  breakfast:"Desayuno", preworkout:"Pre-entreno", lunch:"Comida post-entreno",
+  snack:"Merienda", dinner:"Cena", water:"Agua · 4 L", salt:"Sal total · 5 g",
+  creatine:"Creatina · 5 g", workout:"Entrenamiento completado"
+};
+
+function dateKey(date = new Date()){
+  const y=date.getFullYear(), m=String(date.getMonth()+1).padStart(2,"0"), d=String(date.getDate()).padStart(2,"0");
+  return `${y}-${m}-${d}`;
+}
+function prettyDate(date = new Date()){
+  return date.toLocaleDateString("es-ES",{weekday:"short",day:"2-digit",month:"short"}).replace(/\.$/,"").toUpperCase();
+}
+function loadChecks(){
+  const saved=JSON.parse(localStorage.getItem("pepe_daily_checks")||"{}");
+  return saved[dateKey()]||{};
+}
+function saveChecks(){
+  const saved=JSON.parse(localStorage.getItem("pepe_daily_checks")||"{}");
+  const state={};
+  document.querySelectorAll(".daily-check").forEach(cb=>state[cb.dataset.key]=cb.checked);
+  saved[dateKey()]=state;
+  localStorage.setItem("pepe_daily_checks",JSON.stringify(saved));
+  updateDaily();
+}
+function updateDaily(){
+  const state=loadChecks();
+  const boxes=[...document.querySelectorAll(".daily-check")];
+  boxes.forEach(cb=>cb.checked=!!state[cb.dataset.key]);
+  const done=boxes.filter(cb=>cb.checked).length;
+  const pct=Math.round(done/boxes.length*100);
+  document.getElementById("scoreText").textContent=`${pct}%`;
+  document.getElementById("progressBar").style.width=`${pct}%`;
+  document.getElementById("todayLabel").textContent=`HOY · ${prettyDate()}`;
+  renderHistory();
+}
+function renderHistory(){
+  const history=JSON.parse(localStorage.getItem("pepe_daily_checks")||"{}");
+  const entries=Object.entries(history).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,14);
+  const el=document.getElementById("history");
+  if(!entries.length){el.innerHTML='<div class="history-row"><span>Tu historial aparecerá aquí.</span><span>—</span></div>';return}
+  el.innerHTML=entries.map(([date,state])=>{
+    const done=CHECK_KEYS.filter(k=>state[k]).length;
+    const pct=Math.round(done/CHECK_KEYS.length*100);
+    const [y,m,d]=date.split("-");
+    const label=new Date(Number(y),Number(m)-1,Number(d)).toLocaleDateString("es-ES",{day:"2-digit",month:"short"}).replace(/\.$/,"");
+    return `<div class="history-row"><span>${label}</span><span class="history-score">${done}/${CHECK_KEYS.length} · ${pct}%</span></div>`;
+  }).join("");
+}
+document.querySelectorAll(".daily-check").forEach(cb=>cb.addEventListener("change",saveChecks));
 renderFood();
+updateDaily();
 </script>
 </body>
 </html>
