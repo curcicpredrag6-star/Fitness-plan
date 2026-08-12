@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pepe & Ale — Fitness</title>
+<style>
+:root{--bg:#080909;--card:#121313;--card2:#171817;--gold:#d7a957;--gold2:#f0c978;--text:#f5f3ed;--muted:#9c9b95;--line:#292a27;--green:#8fd3a5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#292319 0,#0b0b0b 38%,#080909 100%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+button{font:inherit} .app{max-width:520px;margin:auto;padding:22px 16px 40px}.brand{text-align:center;padding:12px 0 22px}.brand .mark{font-size:12px;letter-spacing:4px;color:var(--gold);font-weight:800}.brand h1{font-size:30px;margin:7px 0 3px;letter-spacing:-1px}.brand p{margin:0;color:var(--muted);font-size:13px}
+.screen{display:none}.screen.active{display:block}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}.back{background:none;border:0;color:var(--muted);font-size:26px;cursor:pointer}.title{font-weight:800;font-size:20px}.pill{border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--gold2);font-size:11px;font-weight:800}
+.perfiles{display:grid;gap:14px}.perfile{position:relative;overflow:hidden;border:1px solid var(--line);background:linear-gradient(145deg,#171816,#101110);border-radius:22px;padding:22px;cursor:pointer;transition:.2s}.perfile:hover{transform:translateY(-2px);border-color:#5b492b}.perfile .avatar{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#24231f;color:var(--gold2);font-weight:900;font-size:21px;border:1px solid #4c402d}.perfile h2{margin:16px 0 4px}.perfile p{margin:0;color:var(--muted);font-size:13px}.perfile .arrow{position:absolute;right:22px;top:50%;font-size:28px;color:var(--gold);transform:translateY(-50%)}
+.note{margin-top:18px;background:#101514;border:1px solid #1e3027;color:#b6c4ba;border-radius:16px;padding:13px 14px;font-size:12px;line-height:1.45}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px}.stat{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:12px}.stat b{display:block;font-size:15px}.stat span{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}.choice button,.meal{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:18px}.choice button{padding:18px;text-align:left;cursor:pointer}.choice button.active{border-color:var(--gold);box-shadow:0 0 0 1px #806331 inset}.choice strong{display:block;color:var(--gold2);font-size:13px}.choice small{color:var(--muted)}
+.section-title{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);font-weight:900;margin:20px 0 9px}.meals{display:grid;gap:10px}.meal{padding:16px;cursor:pointer}.meal-head{display:flex;gap:12px;align-items:center}.time{font-weight:900;color:var(--gold2);font-size:12px;min-width:47px}.meal h3{font-size:14px;margin:0}.meal .summary{color:var(--muted);font-size:11px;margin-top:5px;line-height:1.35}.details{display:none;margin-top:13px;padding-top:13px;border-top:1px solid var(--line)}.meal.open .details{display:block}.details ul{margin:0;padding-left:18px}.details li{margin:6px 0;font-size:12px;line-height:1.35}.details .label{color:var(--gold2);font-weight:800}
+.tracker{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin-top:14px}.tracker-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:12px}.tracker-row:last-child{border:0}.tracker-row span{color:var(--muted)}.check{accent-color:var(--gold);width:17px;height:17px}
+.footer{margin-top:25px;text-align:center;color:#686861;font-size:10px;line-height:1.5}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="brand">
+    <div class="mark">PERSONAL FITNESS</div>
+    <h1>PEPE <span style="color:var(--gold)">&</span> ALE</h1>
+    <p>Plan de alimentación • entrenamiento • seguimiento</p>
+  </div>
+
+  <section id="home" class="screen active">
+    <div class="section-title">Elige tu perfil</div>
+    <div class="perfiles">
+      <div class="perfile" onclick="openProfile('pepe')">
+        <div class="avatar">P</div><h2>Pepe</h2>
+        <p>86,55 kg • 186 cm • 30 godina • trening 4× nedeljno</p>
+        <div class="arrow">›</div>
+      </div>
+      <div class="perfile" onclick="openProfile('ale')">
+        <div class="avatar">A</div><h2>Alessandro</h2>
+        <p>Elige tu perfil da vidiš njegov plan</p>
+        <div class="arrow">›</div>
+      </div>
+    </div>
+    <div class="note">💡 Cada uno tiene su propio plan y sus propias cantidades. Los alimentos pueden ser similares, pero las cantidades y el entrenamiento son individuales.</div>
+  </section>
+
+  <section id="perfile" class="screen">
+    <div class="top"><button class="back" onclick="goHome()">‹</button><div class="title" id="perfileTitle">Pepe</div><div class="pill" id="perfileWeight">86,55 kg</div></div>
+    <div class="stats" id="stats"></div>
+    <div class="choice">
+      <button id="trainingBtn" class="active" onclick="setDay('training')"><strong>🏋️ DÍA DE ENTRENAMIENTO</strong><small>Entrenamiento a las 13:00</small></button>
+      <button id="restBtn" onclick="setDay('rest')"><strong>🛋️ DÍA DE DESCANSO</strong><small>Sin entrenamiento</small></button>
+    </div>
+    <div id="dayContent"></div>
+    <div class="footer">Plan reformateado a partir del mensaje de la entrenadora. Se mantienen las cantidades y las alternativas.</div>
+  </section>
+</div>
+
+<script>
+const data={
+ pepe:{
+  name:"Pepe",weight:"86,55 kg",stats:["186 cm","30 godina","4× / nedeljno"],
+  training:[
+   ["09:00","OBROK 1","Doručak • izaberi jednu od 2 opcije",[
+    "<span class='label'>Opcija A:</span> café (opcional); 200 ml bebida de almendras Zero; 90 g pan de cereales sin gluten (3 kriške), tostado; 100 g tomate; 5 g AOVE; 3 jaja + 120 g belanaca; 150 g piña en su jugo.",
+    "<span class='label'>Opcija B — fit kolač:</span> 3 jaja + 120 g belanaca; 60 g ovsenih pahuljica ili ovseno brašno bez glutena; 100 g banane ili jabuke; cimet; 5 g stevije; bademov napitak Zero po potrebi. Peći 180°C oko 20–25 min. Odozgo 15 g chocolate negro, mínimo 85% de cacao.",
+    "<span class='label'>Suplementos:</span> 2 perlas de Omega-3 + 1 cápsula de vitamina C."
+   ]],
+   ["12:00","PRE-TRENING","30 g ISO • 250 ml bademovog Zero • 40 g corn flakes bez šećera / COR",[
+    "<span class='label'>Suplementos:</span> 1.500 mg L-karnitina; 1 kapsula sinefrina; 600 mg NAC; 600 mg kalijuma Boi-K; 1 g soli."
+   ]],
+   ["13:00","TRENING","Prema rutini koju šalje trenerka",[]],
+   ["15:00","OBROK 2","Post-trening • povrće + protein + ugljeni hidrat",[
+    "125 g salate 4 sezone ili salteado od povrća.",
+    "<span class='label'>Hidratos — elige uno:</span> 80 g belog pirinča ili bezglutenske paste, mereno suvo (oko 200 g kuvano), <b>ili</b> 350 g patata/boniato, mereno kuvano.",
+    "<span class='label'>Proteína — elige uno:</span> 180 g nemasnog crvenog mesa / pilećih ili purećih prsa / nemasnog lungića, mereno kuvano.",
+    "5 g AOVE.",
+    "<span class='label'>Suplementos:</span> 5 g kreatin monohidrata + 375 mg magnezijuma."
+   ]],
+   ["18:00","OBROK 3","30 g tortitas de arroz ili tostadas ligeras sin gluten + protein + 100 g arándanos",[
+    "<span class='label'>Proteína — elige uno:</span> 100 g pechuga de pollo/pavo; ili 100 g jamón cocido (mínimo 92% de carne magra); ili 80 g jamón curado sin azúcar."
+   ]],
+   ["21:00","OBROK 4","Protein + povrće + 250 g sirovog patata/boniato + 5 g AOVE",[
+    "<span class='label'>Proteína — elige uno:</span> 180 g pechuga de pollo/pavo ili nemasnog lungića; 200 g bele ribe; 170 g lososa; ili 2 jaja + 200 g belanaca.",
+    "150 g espárragos, mereno kuvano (iz tegle), ili salteado od povrća.",
+    "250 g patata/boniato, mereno sirovo (oko 200 g kuvano).",
+    "5 g AOVE."
+   ]]
+  ],
+  rest:[
+   ["09:00","OBROK 1","Doručak • izaberi jednu od 2 opcije",[
+    "<span class='label'>Opcija A:</span> café (opcional); 200 ml bademovog Zero; 70 g pan de cereales sin gluten (2 kriške), tostado; 100 g tomate; 5 g AOVE; 3 jaja + 120 g belanaca; 100 g ananasa.",
+    "<span class='label'>Opcija B — fit kolač:</span> 3 jaja + 120 g belanaca; 40 g ovsenih pahuljica ili ovseno brašno bez glutena; 100 g jabuke; cimet; 5 g stevije; bademov napitak Zero po potrebi. Peći 180°C oko 20–25 min. Odozgo 15 g chocolate negro, mínimo 85% de cacao.",
+    "<span class='label'>Suplementos:</span> 2 perlas de Omega-3 + 1 cápsula de vitamina C."
+   ]],
+   ["14:00","OBROK 2","Povrće + protein + manja količina ugljenih hidrata",[
+    "125 g salate 4 sezone ili salteado od povrća.",
+    "<span class='label'>Hidratos — elige uno:</span> 60 g belog pirinča ili bezglutenske paste, mereno suvo (oko 150 g kuvano), <b>ili</b> 300 g patata/boniato, mereno kuvano.",
+    "180 g nemasnog crvenog mesa / pilećih ili purećih prsa / nemasnog lungića, mereno kuvano.",
+    "5 g AOVE.",
+    "<span class='label'>Suplementos:</span> 5 g kreatin monohidrata + 375 mg magnezijuma."
+   ]],
+   ["17:00","OBROK 3","Bizcocho fit",[
+    "150 g cottage sira; 1 jaje + 120 g belanaca; 35 g ovsenih pahuljica bez glutena; 80 g jabuke ili crvenog voća; cimet; 5 g stevije; bademov napitak Zero po potrebi.",
+    "Sve umutiti/blendirati i peći 180°C oko 20–25 min."
+   ]],
+   ["21:00","OBROK 4","Protein + povrće + ugljeni hidrat + 5 g AOVE",[
+    "<span class='label'>Proteína — elige uno:</span> 180 g pechuga de pollo/pavo ili nemasnog lungića; 200 g bele ribe; 170 g lososa; ili 2 jaja + 200 g belanaca.",
+    "150 g espárragos, mereno kuvano, ili salteado od povrća.",
+    "<span class='label'>Hidratos — elige uno:</span> 40 g pirinča ili bezglutenske paste, mereno suvo (oko 100 g kuvano), <b>ili</b> 200 g patata/boniato, mereno kuvano.",
+    "5 g AOVE."
+   ]]
+  ]
+ },
+ ale:{name:"Alessandro",weight:"—",stats:["Datos","todavía no","actualizados"],training:[],rest:[]}
+};
+
+let current="pepe",day="training";
+function openProfile(p){current=p;document.getElementById("home").classList.remove("active");document.getElementById("perfile").classList.add("active");renderProfile()}
+function goHome(){document.getElementById("perfile").classList.remove("active");document.getElementById("home").classList.add("active")}
+function setDay(d){day=d;document.getElementById("trainingBtn").classList.toggle("active",d==="training");document.getElementById("restBtn").classList.toggle("active",d==="rest");renderDay()}
+function renderProfile(){
+ const p=data[current]; document.getElementById("perfileTitle").textContent=p.name; document.getElementById("perfileWeight").textContent=p.weight;
+ document.getElementById("stats").innerHTML=p.stats.map(x=>`<div class="stat"><b>${x}</b><span>perfil</span></div>`).join("");
+ renderDay()
+}
+function renderDay(){
+ const p=data[current], arr=p[day];
+ const el=document.getElementById("dayContent");
+ if(!arr.length){el.innerHTML=`<div class="note">Aleov plan todavía nije dodat. Cuando la entrenadora envíe sus datos y su plan actualizados, podremos añadir aquí sus cantidades y su entrenamiento.</div>`;return}
+ el.innerHTML=`<div class="section-title">${day==="training"?"Plan de alimentación — día de entrenamiento":"Plan de alimentación — día de descanso"}</div><div class="meals">${arr.map((m,i)=>`<div class="meal" onclick="this.classList.toggle('open')"><div class="meal-head"><div class="time">${m[0]}</div><div><h3>${m[1]}</h3><div class="summary">${m[2]}</div></div></div><div class="details"><ul>${m[3].map(x=>`<li>${x}</li>`).join("")}</ul></div></div>`).join("")}</div><div class="tracker"><div class="section-title" style="margin-top:0">Recordatorio diario</div><label class="tracker-row"><span>💧 Agua — 4 L</span><input class="check" type="checkbox"></label><label class="tracker-row"><span>🧂 Sal total — 5 g</span><input class="check" type="checkbox"></label><label class="tracker-row"><span>💪 Kreatin — 5 g</span><input class="check" type="checkbox"></label><label class="tracker-row"><span>🍽️ Todas las comidas completadas</span><input class="check" type="checkbox"></label></div>`;
+}
+</script>
+</body>
+</html>
