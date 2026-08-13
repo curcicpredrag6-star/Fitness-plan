@@ -74,6 +74,11 @@ button{font:inherit}
  border:1px dashed #1b4a68;border-radius:20px;padding:28px 20px;text-align:center;
  background:rgba(7,20,33,.55)
 }
+.workout-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:14px}
+.workout-tabs button{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:13px;padding:11px 4px;cursor:pointer;font-size:9px;font-weight:900}
+.workout-tabs button.active{color:var(--cyan);border-color:var(--blue);background:linear-gradient(135deg,rgba(29,155,240,.13),rgba(10,21,35,.9))}
+.workout-group{margin-bottom:9px}
+.workout-group .summary{font-size:10px}
 .training-placeholder .big{font-size:35px}.training-placeholder h2{font-size:17px;margin:9px 0 5px}.training-placeholder p{color:var(--muted);font-size:11px;line-height:1.5;margin:0}
 .checklist{margin-top:14px;border:1px solid var(--line);background:var(--card);border-radius:18px;padding:14px}
 .check{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding:9px 0;font-size:11px}
@@ -181,12 +186,36 @@ button{font:inherit}
 <section id="training" class="screen">
   <div class="topbar">
     <button class="back" onclick="openSection('home')">‹</button>
-    <div><div class="page-title">Entrenamiento</div><div class="page-sub">Tu rutina personalizada</div></div>
+    <div><div class="page-title">Entrenamiento</div><div class="page-sub">Rutina personal · PREPA1 · 4 días/semana</div></div>
   </div>
-  <div class="training-placeholder">
-    <div class="big">◉</div>
-    <h2>Rutina próximamente</h2>
-    <p>Esta sección está preparada. Cuando recibamos la rutina de tu entrenadora, añadiremos ejercicios, series, repeticiones, descansos y seguimiento sin cambiar el diseño de la aplicación.</p>
+
+  <div class="label">RUTINA PERSONAL · PREPA1</div>
+
+  <div class="note">
+    <b>📌 NORMAS GENERALES</b><br>
+    Calentamiento específico antes del primer ejercicio.<br>
+    Series de aproximación NO cuentan como series efectivas.<br>
+    Básicos: RIR 1-2 · Aislantes: RIR 0-1 en la última serie.<br>
+    Descanso: 2-3' básicos / 60-90" aislantes.<br>
+    Técnica estricta + recorrido completo.<br>
+    Cuando completes el máximo de reps en todas las series → subir carga.
+  </div>
+
+  <div class="workout-tabs" style="margin-top:14px">
+    <button id="w1" class="active" onclick="setWorkout(1)">DÍA 1</button>
+    <button id="w2" onclick="setWorkout(2)">DÍA 2</button>
+    <button id="w3" onclick="setWorkout(3)">DÍA 3</button>
+    <button id="w4" onclick="setWorkout(4)">DÍA 4</button>
+  </div>
+
+  <div id="workoutContent"></div>
+
+  <div class="label">⚡ CARDIO</div>
+  <div class="note">
+    🚶🏻‍♂️ <b>8.000 pasos/día como mínimo.</b><br><br>
+    📍Después de 2-3 entrenamientos/semana: <b>20-25' cardio LISS</b><br>
+    Opciones: cinta inclinada andando, bicicleta ó elíptica.<br>
+    ❌ No necesitas correr.
   </div>
 </section>
 
@@ -271,6 +300,111 @@ function renderFood(){
   <div class="mealhead"><div class="time">${m[0]}</div><div><div class="mealtitle">${m[1]}</div><div class="summary">${m[2]}</div></div></div>
   <div class="details"><ul>${m[3].map(x=>`<li>${x}</li>`).join("")}</ul></div>
  </article>`).join("")}</div>`;
+}
+
+
+const workouts = {
+  1:{
+    title:"🔥 DÍA 1 — LOWER A CUÁDRICEPS + GLÚTEO + CORE",
+    groups:[
+      ["CUÁDRICEPS + GLÚTEO + CORE",[
+        "1️⃣ HACK SQUAT / PENDULAR — 1x6-8 + 3x8-10 · RIR 1-2 · ⬆️ Bajada 3\"",
+        "2️⃣ PRENSA INCLINADA — 3x8-12 · RIR 1-2 · Última → REST-PAUSE 10 + 3 + 3",
+        "3️⃣ BÚLGARA CON MANCUERNAS — 3x8-10/cada pierna · RIR 1-2",
+        "4️⃣ EXTENSIÓN CUÁDRICEPS — 3x10-15 · Última → MYO-REPS 15 + 4 + 4 + 4",
+        "5️⃣ HIP THRUST — 3x6-10 · RIR 1 · Pausa 2\" arriba",
+        "6️⃣ GEMELO DE PIE — 4x8-12 · Pausa 1\" arriba + estiramiento controlado",
+        "7️⃣ ADDUCTOR MAQUINA — 4x10-12+2d",
+        "8️⃣ CRUNCH EN POLEA — 3x10-15"
+      ]]
+    ]
+  },
+  2:{
+    title:"🦅 DÍA 2 — UPPER A DORSAL + PECHO SUPERIOR + HOMBRO",
+    groups:[
+      ["DORSAL + PECHO SUPERIOR + HOMBRO",[
+        "1️⃣ JALÓN UNILATERAL EN POLEA — 3x8-12/lado · Controlando especialmente la fase excéntrica.",
+        "2️⃣ DOMINADAS / DOMINADAS ASISTIDAS — 3x6-10 · RIR 1-2",
+        "3️⃣ REMO CON PECHO APOYADO — 3x8-12 · RIR 1",
+        "4️⃣ PRESS INCLINADO CON MANCUERNAS — 3x6-10 · RIR 1-2",
+        "5️⃣ PRESS CONVERGENTE INCLINADO — 2x10-12 · RIR 1",
+        "6️⃣ ELEVACIÓN LATERAL EN POLEA — 4x12-20 · Última → dropset",
+        "7️⃣ REVERSE PEC DECK / PÁJAROS — 3x15-20",
+        "8️⃣ CURL INCLINADO — 3x8-12",
+        "9️⃣ TRÍCEPS CUERDA — 3x10-15",
+        "🔟 PULLOVER EN POLEA — 2x15-20"
+      ]]
+    ]
+  },
+  3:{
+    title:"🍑 DÍA 3 — LOWER B FEMORAL + GLÚTEO + PIERNA",
+    groups:[
+      ["FEMORAL + GLÚTEO + PIERNA",[
+        "1️⃣ PESO MUERTO RUMANO — 3x6-8 · RIR 1-2 · ⬆️ Técnica perfecta, sin buscar fallo.",
+        "2️⃣ CURL FEMORAL SENTADO — 3x8-12 · RIR 1",
+        "3️⃣ HIP THRUST — 3x8-10 · Última → REST-PAUSE 8 + 3 + 3",
+        "4️⃣ PRENSA — PIES MÁS ALTOS — 3x10-12 · RIR 1-2",
+        "5️⃣ EXTENSIÓN DE CADERA UNILATERAL — 2x12-15/lado",
+        "6️⃣ CURL FEMORAL TUMBADO — 2x12-15 · Última → dropset",
+        "7️⃣ GEMELO SENTADO — 4x10-15",
+        "8️⃣ ELEVACIÓN DE PIERNAS (ABS) — 3x10-15"
+      ]]
+    ]
+  },
+  4:{
+    title:"💥 DÍA 4 — UPPER B ESPALDA + HOMBRO + PECHO + BRAZOS",
+    groups:[
+      ["ESPALDA + HOMBRO + PECHO + BRAZOS",[
+        "1️⃣ REMO HAMMER / MÁQUINA PECHO APOYADO — 3x6-10 · RIR 1",
+        "2️⃣ JALÓN AGARRE NEUTRO — 3x8-12 · RIR 1",
+        "3️⃣ PRESS CONVERGENTE DE PECHO — 3x8-12",
+        "4️⃣ PRESS INCLINADO EN MÁQUINA — 2x10-12",
+        "5️⃣ ELEVACIÓN LATERAL EN MÁQUINA — 3x12-20",
+        "6️⃣ REVERSE PEC DECK — 3x15-20",
+        "7️⃣ CURL BARRA EZ — 3x8-12",
+        "8️⃣ TRÍCEPS POR ENCIMA DE LA CABEZA — 3x10-15",
+        "9️⃣ CURL MARTILLO — 2x10-12",
+        "🔟 TRÍCEPS CUERDA — 2x12-15"
+      ]],
+      ["🔥 FINISHER HOMBRO",[
+        "Elevaciones laterales: 15 + 10 + 10",
+        "Descanso 15-20\" entre mini-series."
+      ]]
+    ]
+  }
+};
+
+let currentWorkout = 1;
+
+function setWorkout(day){
+  currentWorkout = day;
+  for(let i=1;i<=4;i++){
+    document.getElementById("w"+i).classList.toggle("active", i===day);
+  }
+  renderWorkout();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function renderWorkout(){
+  const w = workouts[currentWorkout];
+  document.getElementById("workoutContent").innerHTML =
+    `<div class="label">${w.title}</div>
+     <div class="meals">
+       ${w.groups.map(g=>`
+         <article class="meal workout-group" onclick="this.classList.toggle('open')">
+           <div class="mealhead">
+             <div class="time">▸</div>
+             <div>
+               <div class="mealtitle">${g[0]}</div>
+               <div class="summary">${g[1].length} ejercicios · pulsa para abrir</div>
+             </div>
+           </div>
+           <div class="details">
+             <ul>${g[1].map(x=>`<li>${x}</li>`).join("")}</ul>
+           </div>
+         </article>
+       `).join("")}
+     </div>`;
 }
 
 const CHECK_KEYS = ["breakfast","preworkout","lunch","snack","dinner","water","salt","creatine","workout"];
