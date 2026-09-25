@@ -121,7 +121,7 @@ button{font:inherit}
     <h1>PEPE</h1>
     <p>Plan personalizado · Alimentación & entrenamiento</p>
     <div class="stats">
-      <div class="stat"><strong>86,55 kg</strong><span>Peso inicial</span></div>
+      <div class="stat"><strong>86,8 kg</strong><span>Peso inicial</span></div>
       <div class="stat"><strong>1,86 m</strong><span>Altura</span></div>
       <div class="stat"><strong>4×</strong><span>Entreno / semana</span></div>
     </div>
@@ -142,7 +142,7 @@ button{font:inherit}
 <section id="food" class="screen">
   <div class="topbar">
     <button class="back" onclick="openSection('home')">‹</button>
-    <div><div class="page-title">Alimentación</div><div class="page-sub">26/08/2026 → 02/09/2026 · 4 días de entrenamiento</div></div>
+    <div><div class="page-title">Alimentación</div><div class="page-sub">23/09/2026 → 29/09/2026 · 4 días de entrenamiento</div></div>
   </div>
 
   <div class="day-tabs">
@@ -186,10 +186,10 @@ button{font:inherit}
 <section id="training" class="screen">
   <div class="topbar">
     <button class="back" onclick="openSection('home')">‹</button>
-    <div><div class="page-title">Entrenamiento</div><div class="page-sub">Rutina personal · PREPA1 · 4 días/semana</div></div>
+    <div><div class="page-title">Entrenamiento</div><div class="page-sub">Rutina personal · PREPA2 · 4 días/semana</div></div>
   </div>
 
-  <div class="label">RUTINA PERSONAL · PREPA1</div>
+  <div class="label">RUTINA PERSONAL · PREPA2</div>
 
   <div class="note">
     <b>📌 NORMAS GENERALES</b><br>
@@ -224,62 +224,75 @@ button{font:inherit}
 
 <script>
 const plan = {
-training:[
-["09:00","COMIDA 1","Desayuno · elige una opción",[
-"<b>Opción A:</b> Café (opcional); 200 ml bebida de almendras Zero; 80 g pan de cereales sin gluten (3 rebanadas), tostado; 100 g tomate; 5 g AOVE; 2 huevos + 180 g claras; 150 g piña en su jugo.",
-"<b>Opción B — Bizcocho fit:</b> 2 huevos + 150 g claras; 60 g copos de avena o harina de avena sin gluten; 100 g plátano o manzana; canela; 5 g stevia en polvo; bebida de almendras Zero si hace falta para textura. Batir y hornear a 180 °C unos 20–25 min. Añadir por encima 15 g chocolate negro mínimo 85 % cacao.",
-"<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
-]],
-["12:00","PRE-ENTRENO","30 g ISO · 250 ml bebida de almendras Zero · 50 g copos de maíz sin azúcar o COR · 100 g plátano",[
-"<b>Suplementos:</b> 1.500 mg L-carnitina; 1 cápsula sinefrina; 600 mg NAC; 600 mg Potasio Boi-K; 1 g sal."
-]],
-["15:00","COMIDA 2","Verdura + hidratos + proteína",[
-"120 g espárragos blancos pesados en cocido (bote).",
-"<b>Hidratos — elegir uno:</b> 80 g arroz blanco o pasta sin gluten pesado en seco (200 g en cocido) <b>o</b> 300 g patata/boniato pesado en cocido.",
-"<b>Proteína — elegir uno:</b> 200 g carne roja magra, pechuga de pollo/pavo o lomo magro pesada en cocido.",
-"10 g AOVE <b>o 60 g aguacate</b>.",
-"<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
-]],
-["18:00","COMIDA 3","Tortitas/tostadas + proteína + fruta",[
-"30 g tortitas de arroz o tostadas ligeras sin gluten.",
-"<b>Proteína — elegir uno:</b> 80 g pechuga de pollo/pavo; 80 g jamón cocido mínimo 92 % carne magra; o 70 g jamón curado sin azúcar.",
-"<b>Fruta — elegir una:</b> 100 g arándanos o 120 g kiwi/manzana."
-]],
-["21:00","COMIDA 4","Proteína + verdura + patata/boniato",[
-"<b>Proteína — elegir uno:</b> 170 g pechuga de pollo/pavo o lomo magro pesado en cocido; 200 g pescado blanco pesado en cocido; 160 g lomos de salmón pesado en cocido; o 2 huevos + 150 g claras.",
-"50 g canónigos + 50 g tomate cherry.",
-"250 g patata/boniato pesado en crudo (aprox. 200 g cocido).",
-"10 g AOVE <b>o 60 g aguacate</b>."
-]]
-],
-rest:[
-["09:00","COMIDA 1","Desayuno · elige una opción",[
-"Café (opcional); 200 ml bebida de almendras Zero.",
-"<b>Opción A:</b> 30 g tortitas de arroz/maíz; 80 g aguacate; 50 g tomate; 2 huevos; 40 g jamón curado sin azúcar; 5 g AOVE; 100 g piña en su jugo.",
-"<b>Opción B — Mousse antiinflamatoria:</b> 200 g yogur natural High Protein o queso batido 0 %; 100 g kéfir 0 %; 50 ml bebida de almendras Zero; 5 g psyllium; 150 g frutos rojos chafados; canela. Dejar reposando toda la noche en la nevera.",
-"<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
-]],
-["14:00","COMIDA 2","Verdura + proteína + hidratos",[
-"150 g pimiento + cebolla pesado en crudo.",
-"<b>Hidratos — elegir uno:</b> 60 g arroz blanco o pasta sin gluten pesado en seco (150 g en cocido) <b>o</b> 230 g patata/boniato pesado en cocido.",
-"180 g carne roja magra, pechuga de pollo/pavo o lomo magro pesada en cocido.",
-"5 g AOVE.",
-"<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
-]],
-["17:00","COMIDA 3","Pan proteico + queso + proteína",[
-"Café (opcional).",
-"70 g (2 rebanadas) pan de molde proteico High Protein Día/Aldi. Tostar.",
-"35 g queso crema sin lactosa.",
-"50 g salmón ahumado o jamón curado sin azúcar o 70 g tiras de pollo al horno."
-]],
-["21:00","COMIDA 4","Proteína + verdura + fruta",[
-"<b>Proteína — elegir uno:</b> 180 g pechuga de pollo/pavo o lomo magro pesado en cocido; 200 g pescado blanco pesado en cocido; 170 g lomos de salmón pesado en cocido; o 2 huevos + 200 g claras.",
-"150 g espárragos pesados en cocido (bote) o salteado de verduras.",
-"5 g AOVE.",
-"250 g sandía/melón."
-]]
-]
+  training:[
+    ["09:00","COMIDA 1","Desayuno · elige una opción",[
+      "Café (opcional); 200 ml bebida de almendras Zero; 120 g copos de avena + canela; 100 g arándanos; 3 huevos + 200 g claras; 5 g AOVE.",
+      "<b>Opción B — Bizcocho fit:</b> 3 huevos + 200 g claras; 60 g copos de avena o harina de avena sin gluten; 120 g plátano; canela; 5 g stevia en polvo; bebida de almendras Zero si hace falta para textura. Batir y hornear a 180 °C unos 20–25 min. Añadir por encima 14 g (2 onzas) chocolate negro mínimo 85 % cacao.",
+      "<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
+    ]],
+
+    ["14:00","COMIDA 2","Legumbres + hidratos + proteína",[
+      "100 g guisantes/lentejas pesados en cocido (bote).",
+      "<b>Hidratos — elegir uno:</b> 80 g arroz blanco o pasta sin gluten pesado en seco (200 g en cocido) <b>o</b> 300 g patata/boniato pesado en cocido.",
+      "200 g carne roja magra, pechuga de pollo/pavo o lomo magro pesada en cocido.",
+      "10 g AOVE <b>o 60 g aguacate</b>."
+    ]],
+
+    ["18:00","PRE-ENTRENO","40 g ISO · 300 ml bebida de almendras Zero · 100 g copos de avena",[
+      "<b>Suplementos:</b> 1.500 mg L-carnitina; 1 cápsula sinefrina; 600 mg NAC; 600 mg Potasio Boi-K; 1 g sal."
+    ]],
+
+    ["21:00","COMIDA 4","POST · verdura + hidratos + proteína",[
+      "120 g salteado de verduras pesado en crudo.",
+      "100 g arroz/pasta sin gluten pesado en seco (250 g en cocido).",
+      "<b>Proteína — elegir uno:</b> 200 g pechuga de pollo/pavo/lomo magro pesado en crudo; 250 g filetes de merluza/halibut/tilapia o sepia pesada en crudo; o 220 g langostinos cocidos pelados y limpios.",
+      "5 g AOVE.",
+      "<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
+    ]],
+
+    ["22:00","ANTES DE DORMIR","Yogur High Protein + fruta",[
+      "240 g (2) yogur natural High Protein sin lactosa.",
+      "100 g arándanos/piña.",
+      "Canela."
+    ]]
+  ],
+  rest:[
+    ["09:00","COMIDA 1","Desayuno · elige una opción",[
+      "Café (opcional); 200 ml bebida de almendras Zero.",
+      "<b>Opción A:</b> 70 g (2 rebanadas) pan de molde cereales sin gluten. Tostar; 3 huevos + 180 g claras; 5 g AOVE; 100 g arándanos.",
+      "<b>Opción B — Porridge:</b> 100 g copos de avena; 5 g psyllium; 40 g batido ISO; canela; 100 g frutos rojos.",
+      "<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
+    ]],
+
+    ["14:00","COMIDA 2","Ensalada + hidratos + proteína",[
+      "100 g ensalada 4 estaciones.",
+      "60 g arroz blanco o pasta sin gluten pesado en seco (150 g en cocido).",
+      "200 g carne roja magra, pechuga de pollo/pavo o lomo magro pesada en cocido.",
+      "100 g cottage sin lactosa.",
+      "5 g AOVE.",
+      "Vinagre de manzana sin filtrar.",
+      "<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
+    ]],
+
+    ["18:00","COMIDA 4","Pan proteico + aguacate + proteína",[
+      "Café (opcional).",
+      "1 kiwi.",
+      "70 g (2 rebanadas) pan de molde proteico High Protein Día/Aldi. Tostar.",
+      "80 g aguacate.",
+      "40 g tomate.",
+      "2 huevos.",
+      "5 g AOVE."
+    ]],
+
+    ["21:00","COMIDA 4","Proteína + verdura + fruta",[
+      "<b>Proteína — elegir uno:</b> 200 g pechuga de pollo/pavo o lomo magro pesado en cocido; 250 g pescado blanco pesado en cocido; o 180 g lomos de salmón pesado en cocido.",
+      "150 g espárragos pesados en cocido (bote) o salteado de verduras.",
+      "5 g AOVE.",
+      "180 g manzana."
+    ]]
+  ]
 };
+
 let currentDay="training";
 
 function openSection(id){
@@ -323,70 +336,79 @@ function renderFood(){
 
 const workouts = {
   1:{
-    title:"🔥 DÍA 1 — LOWER A CUÁDRICEPS + GLÚTEO + CORE",
+    title:"🔴 DÍA 1 — LOWER A CUÁDRICEPS + GLÚTEO",
     groups:[
-      ["CUÁDRICEPS + GLÚTEO + CORE",[
-        "1️⃣ HACK SQUAT / PENDULAR — 1x6-8 + 3x8-10 · RIR 1-2 · ⬆️ Bajada 3\"",
-        "2️⃣ PRENSA INCLINADA — 3x8-12 · RIR 1-2 · Última → REST-PAUSE 10 + 3 + 3",
-        "3️⃣ BÚLGARA CON MANCUERNAS — 3x8-10/cada pierna · RIR 1-2",
-        "4️⃣ EXTENSIÓN CUÁDRICEPS — 3x10-15 · Última → MYO-REPS 15 + 4 + 4 + 4",
-        "5️⃣ HIP THRUST — 3x6-10 · RIR 1 · Pausa 2\" arriba",
-        "6️⃣ GEMELO DE PIE — 4x8-12 · Pausa 1\" arriba + estiramiento controlado",
-        "7️⃣ ADDUCTOR MAQUINA — 4x10-12+2d",
-        "8️⃣ CRUNCH EN POLEA — 3x10-15"
+      ["CUÁDRICEPS + GLÚTEO",[
+        "1️⃣ HACK SQUAT / PENDULAR — 1×6-8 + 3×8-10",
+        "🔥 Última serie: CLUSTER 4+2+2 → 15-20'' entre mini-series.",
+        "2️⃣ PRENSA INCLINADA — 3×8-12",
+        "Última: REST-PAUSE 10+3+3",
+        "3️⃣ BÚLGARA CON MANCUERNAS — 3×8-10/cada pierna",
+        "4️⃣ EXTENSIÓN DE CUÁDRICEPS — 3×10-15",
+        "Última: MYO-REPS 15+4+4+4",
+        "5️⃣ HIP THRUST — 3×6-10",
+        "Última cerca de fallo técnico.",
+        "6️⃣ GEMELO DE PIE — 3×8-12",
+        "Pausa 1-2'' arriba.",
+        "7️⃣ CRUNCH EN POLEA — 3×10-15"
       ]]
     ]
   },
   2:{
-    title:"🦅 DÍA 2 — UPPER A DORSAL + PECHO SUPERIOR + HOMBRO",
+    title:"🔵 DÍA 2 — UPPER A ESPALDA + PECTORAL + HOMBRO",
     groups:[
-      ["DORSAL + PECHO SUPERIOR + HOMBRO",[
-        "1️⃣ JALÓN UNILATERAL EN POLEA — 3x8-12/lado · Controlando especialmente la fase excéntrica.",
-        "2️⃣ DOMINADAS / DOMINADAS ASISTIDAS — 3x6-10 · RIR 1-2",
-        "3️⃣ REMO CON PECHO APOYADO — 3x8-12 · RIR 1",
-        "4️⃣ PRESS INCLINADO CON MANCUERNAS — 3x6-10 · RIR 1-2",
-        "5️⃣ PRESS CONVERGENTE INCLINADO — 2x10-12 · RIR 1",
-        "6️⃣ ELEVACIÓN LATERAL EN POLEA — 4x12-20 · Última → dropset",
-        "7️⃣ REVERSE PEC DECK / PÁJAROS — 3x15-20",
-        "8️⃣ CURL INCLINADO — 3x8-12",
-        "9️⃣ TRÍCEPS CUERDA — 3x10-15",
-        "🔟 PULLOVER EN POLEA — 2x15-20"
+      ["ESPALDA + PECTORAL + HOMBRO",[
+        "1️⃣ DOMINADAS / JALÓN NEUTRO — 3×6-10",
+        "Última: CLUSTER 5+2+2",
+        "2️⃣ REMO CON PECHO APOYADO — 3×8-10",
+        "3️⃣ PRESS INCLINADO CON MANCUERNAS — 3×6-10",
+        "Última: CLUSTER 4+2+2",
+        "4️⃣ PRESS CONVERGENTE DE PECHO — 2×8-12",
+        "5️⃣ REMO UNILATERAL EN POLEA — 2×10-12/brazo",
+        "6️⃣ ELEVACIÓN LATERAL EN POLEA — 3×12-20",
+        "Última: MYO-REPS 15+5+5+5",
+        "7️⃣ CURL INCLINADO CON MANCUERNAS — 3×8-12",
+        "8️⃣ EXTENSIÓN DE TRÍCEPS CON CUERDA — 3×10-15"
       ]]
     ]
   },
   3:{
-    title:"🍑 DÍA 3 — LOWER B FEMORAL + GLÚTEO + PIERNA",
+    title:"🟢 DÍA 3 — LOWER B FEMORAL + GLÚTEO",
     groups:[
-      ["FEMORAL + GLÚTEO + PIERNA",[
-        "1️⃣ PESO MUERTO RUMANO — 3x6-8 · RIR 1-2 · ⬆️ Técnica perfecta, sin buscar fallo.",
-        "2️⃣ CURL FEMORAL SENTADO — 3x8-12 · RIR 1",
-        "3️⃣ HIP THRUST — 3x8-10 · Última → REST-PAUSE 8 + 3 + 3",
-        "4️⃣ PRENSA — PIES MÁS ALTOS — 3x10-12 · RIR 1-2",
-        "5️⃣ EXTENSIÓN DE CADERA UNILATERAL — 2x12-15/lado",
-        "6️⃣ CURL FEMORAL TUMBADO — 2x12-15 · Última → dropset",
-        "7️⃣ GEMELO SENTADO — 4x10-15",
-        "8️⃣ ELEVACIÓN DE PIERNAS (ABS) — 3x10-15"
+      ["FEMORAL + GLÚTEO",[
+        "1️⃣ PESO MUERTO RUMANO — 3×6-8",
+        "RIR 1-2 y máxima calidad técnica.",
+        "2️⃣ CURL FEMORAL SENTADO — 3×8-12",
+        "Última: REST-PAUSE 8+3+3",
+        "3️⃣ HIP THRUST — 3×8-10",
+        "Última: CLUSTER 5+2+2",
+        "4️⃣ PRENSA PIES ALTOS — 3×10-12",
+        "5️⃣ EXTENSIÓN DE CADERA UNILATERAL EN POLEA — 3×12-15/pierna",
+        "1'' de contracción arriba.",
+        "6️⃣ CURL FEMORAL TUMBADO — 2×12-15",
+        "Última: DROP SET",
+        "7️⃣ GEMELO SENTADO — 3×10-15",
+        "8️⃣ ELEVACIONES DE PIERNAS — 3×10-15"
       ]]
     ]
   },
   4:{
-    title:"💥 DÍA 4 — UPPER B ESPALDA + HOMBRO + PECHO + BRAZOS",
+    title:"🟣 DÍA 4 — UPPER B ESPALDA + PECHO + DELTOIDES + BRAZOS",
     groups:[
-      ["ESPALDA + HOMBRO + PECHO + BRAZOS",[
-        "1️⃣ REMO HAMMER / MÁQUINA PECHO APOYADO — 3x6-10 · RIR 1",
-        "2️⃣ JALÓN AGARRE NEUTRO — 3x8-12 · RIR 1",
-        "3️⃣ PRESS CONVERGENTE DE PECHO — 3x8-12",
-        "4️⃣ PRESS INCLINADO EN MÁQUINA — 2x10-12",
-        "5️⃣ ELEVACIÓN LATERAL EN MÁQUINA — 3x12-20",
-        "6️⃣ REVERSE PEC DECK — 3x15-20",
-        "7️⃣ CURL BARRA EZ — 3x8-12",
-        "8️⃣ TRÍCEPS POR ENCIMA DE LA CABEZA — 3x10-15",
-        "9️⃣ CURL MARTILLO — 2x10-12",
-        "🔟 TRÍCEPS CUERDA — 2x12-15"
-      ]],
-      ["🔥 FINISHER HOMBRO",[
-        "Elevaciones laterales: 15 + 10 + 10",
-        "Descanso 15-20\" entre mini-series."
+      ["ESPALDA + PECHO + DELTOIDES + BRAZOS",[
+        "1️⃣ REMO HAMMER / MÁQUINA CON PECHO APOYADO — 3×6-10",
+        "Última: CLUSTER 5+2+2",
+        "2️⃣ JALÓN UNILATERAL/NEUTRO — 3×8-12",
+        "3️⃣ PRESS CONVERGENTE DE PECHO — 3×8-12",
+        "Última: REST-PAUSE 10+3+3",
+        "4️⃣ PRESS INCLINADO EN MÁQUINA — 2×10-12",
+        "5️⃣ ELEVACIÓN LATERAL EN MÁQUINA — 3×12-20",
+        "Última: MYO-REPS",
+        "6️⃣ REVERSE PEC DECK — 3×12-20",
+        "7️⃣ CURL EZ — 3×8-12",
+        "Última: REST-PAUSE 8+3+3",
+        "8️⃣ TRÍCEPS POR ENCIMA DE LA CABEZA CON CUERDA — 3×10-15",
+        "9️⃣ CURL MARTILLO — 2×10-12"
       ]]
     ]
   }
