@@ -121,7 +121,7 @@ button{font:inherit}
     <h1>PEPE</h1>
     <p>Plan personalizado · Alimentación & entrenamiento</p>
     <div class="stats">
-      <div class="stat"><strong>86,55 kg</strong><span>Peso inicial</span></div>
+      <div class="stat"><strong>86,8 kg</strong><span>Peso inicial</span></div>
       <div class="stat"><strong>1,86 m</strong><span>Altura</span></div>
       <div class="stat"><strong>4×</strong><span>Entreno / semana</span></div>
     </div>
@@ -142,7 +142,7 @@ button{font:inherit}
 <section id="food" class="screen">
   <div class="topbar">
     <button class="back" onclick="openSection('home')">‹</button>
-    <div><div class="page-title">Alimentación</div><div class="page-sub">26/08/2026 → 02/09/2026 · 4 días de entrenamiento</div></div>
+    <div><div class="page-title">Alimentación</div><div class="page-sub">07/10/2026 → 20/10/2026 · 4 días de entrenamiento</div></div>
   </div>
 
   <div class="day-tabs">
@@ -186,10 +186,10 @@ button{font:inherit}
 <section id="training" class="screen">
   <div class="topbar">
     <button class="back" onclick="openSection('home')">‹</button>
-    <div><div class="page-title">Entrenamiento</div><div class="page-sub">Rutina personal · PREPA1 · 4 días/semana</div></div>
+    <div><div class="page-title">Entrenamiento</div><div class="page-sub">Rutina personal · PREPA3 · 4 días/semana</div></div>
   </div>
 
-  <div class="label">RUTINA PERSONAL · PREPA1</div>
+  <div class="label">RUTINA PERSONAL · PREPA3</div>
 
   <div class="note">
     <b>📌 NORMAS GENERALES</b><br>
@@ -227,57 +227,60 @@ button{font:inherit}
 const plan = {
 training:[
 ["09:00","COMIDA 1","Desayuno · elige una opción",[
-"<b>Opción A:</b> Café (opcional); 200 ml bebida de almendras Zero; 80 g pan de cereales sin gluten (3 rebanadas), tostado; 100 g tomate; 5 g AOVE; 2 huevos + 180 g claras; 150 g piña en su jugo.",
-"<b>Opción B — Bizcocho fit:</b> 2 huevos + 150 g claras; 60 g copos de avena o harina de avena sin gluten; 100 g plátano o manzana; canela; 5 g stevia en polvo; bebida de almendras Zero si hace falta para textura. Batir y hornear a 180 °C unos 20–25 min. Añadir por encima 15 g chocolate negro mínimo 85 % cacao.",
+"<b>Opción A:</b> Café (opcional); porridge con 40 g batido de proteína sin lactosa, 50 g copos de avena sin gluten, 50 g muesli crunchy de legumbres Hacendado (¡contiene gluten!), 100 g arándanos y 380 ml bebida de almendras Zero.",
+"<b>Opción B:</b> Café (opcional); 200 ml bebida de almendras Zero; 100 g (3 rebanadas) pan de molde de cereales sin gluten, tostado; 2 huevos; 100 g bonito en AOVE (escurrido); 60 g aguacate; 50 g tomate.",
 "<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
 ]],
-["12:00","PRE-ENTRENO","30 g ISO · 250 ml bebida de almendras Zero · 50 g copos de maíz sin azúcar o COR · 100 g plátano",[
+["14:00","COMIDA 2","Calabaza + quinoa + proteína",[
+"280 g calabaza pesada en crudo.",
+"125 g (1 tarrina) quinoa blanca-roja pesada en cocido.",
+"180 g carne roja magra, pechuga de pollo/pavo o lomo magro pesado en cocido.",
+"5 g AOVE."
+]],
+["18:00","PRE-ENTRENO","Batido + avena + arándanos",[
+"40 g ISO sin lactosa.",
+"50 g copos de avena sin gluten.",
+"100 g arándanos.",
+"300 ml bebida de almendras Zero.",
 "<b>Suplementos:</b> 1.500 mg L-carnitina; 1 cápsula sinefrina; 600 mg NAC; 600 mg Potasio Boi-K; 1 g sal."
 ]],
-["15:00","COMIDA 2","Verdura + hidratos + proteína",[
-"120 g espárragos blancos pesados en cocido (bote).",
-"<b>Hidratos — elegir uno:</b> 80 g arroz blanco o pasta sin gluten pesado en seco (200 g en cocido) <b>o</b> 300 g patata/boniato pesado en cocido.",
-"<b>Proteína — elegir uno:</b> 200 g carne roja magra, pechuga de pollo/pavo o lomo magro pesada en cocido.",
-"10 g AOVE <b>o 60 g aguacate</b>.",
+["21:00","COMIDA 4 · POST","Ensaladilla rusa con atún y mayonesa fit",[
+"380 g ensaladilla rusa congelada pesada en crudo.",
+"100 g atún al natural; 1 huevo cocido; 40 g olivas rellenas de anchoas.",
+"<b>Mayonesa fit:</b> 2 huevos cocidos, 1 cucharada mostaza Dijon, 100 g yogur natural High Protein sin lactosa, salsa picante tipo Valentina (opcional), sal y pimienta negra. Batir y listo.",
 "<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
 ]],
-["18:00","COMIDA 3","Tortitas/tostadas + proteína + fruta",[
-"30 g tortitas de arroz o tostadas ligeras sin gluten.",
-"<b>Proteína — elegir uno:</b> 80 g pechuga de pollo/pavo; 80 g jamón cocido mínimo 92 % carne magra; o 70 g jamón curado sin azúcar.",
-"<b>Fruta — elegir una:</b> 100 g arándanos o 120 g kiwi/manzana."
-]],
-["21:00","COMIDA 4","Proteína + verdura + patata/boniato",[
-"<b>Proteína — elegir uno:</b> 170 g pechuga de pollo/pavo o lomo magro pesado en cocido; 200 g pescado blanco pesado en cocido; 160 g lomos de salmón pesado en cocido; o 2 huevos + 150 g claras.",
-"50 g canónigos + 50 g tomate cherry.",
-"250 g patata/boniato pesado en crudo (aprox. 200 g cocido).",
-"10 g AOVE <b>o 60 g aguacate</b>."
+["22:00","ANTES DE DORMIR","Yogur + fruta",[
+"120 g (1 unidad) yogur natural High Protein sin lactosa.",
+"100 g arándanos o piña.",
+"Canela."
 ]]
 ],
 rest:[
 ["09:00","COMIDA 1","Desayuno · elige una opción",[
-"Café (opcional); 200 ml bebida de almendras Zero.",
-"<b>Opción A:</b> 30 g tortitas de arroz/maíz; 80 g aguacate; 50 g tomate; 2 huevos; 40 g jamón curado sin azúcar; 5 g AOVE; 100 g piña en su jugo.",
-"<b>Opción B — Mousse antiinflamatoria:</b> 200 g yogur natural High Protein o queso batido 0 %; 100 g kéfir 0 %; 50 ml bebida de almendras Zero; 5 g psyllium; 150 g frutos rojos chafados; canela. Dejar reposando toda la noche en la nevera.",
+"<b>Opción A:</b> Café (opcional); 200 ml bebida de almendras Zero; 80 g (2 unidades) wraps High Protein Lidl; 100 g tomate; 100 g aguacate; 2 huevos cocidos; 120 g tiras de pollo al horno; 30 g queso rallado mozzarella light.",
+"<b>Opción B — Porridge:</b> Café (opcional); 300 ml bebida de almendras Zero; 60 g copos de avena; 10 g psyllium en polvo; 40 g batido ISO sin lactosa; canela; 100 g frutos rojos.",
 "<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
 ]],
-["14:00","COMIDA 2","Verdura + proteína + hidratos",[
-"150 g pimiento + cebolla pesado en crudo.",
-"<b>Hidratos — elegir uno:</b> 60 g arroz blanco o pasta sin gluten pesado en seco (150 g en cocido) <b>o</b> 230 g patata/boniato pesado en cocido.",
-"180 g carne roja magra, pechuga de pollo/pavo o lomo magro pesada en cocido.",
-"5 g AOVE.",
+["14:00","COMIDA 2","Verduras + pasta sin gluten + proteína",[
+"180 g salteado de verduras pesado en crudo.",
+"70 g pasta sin gluten pesada en seco (180 g en cocido).",
+"180 g carne roja magra, pechuga de pollo/pavo o lomo magro pesado en cocido.",
+"30 g queso rallado Eatlean o High Protein.",
+"5 g AOVE o 50 g tomate frito light 0 % azúcares.",
 "<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
 ]],
-["17:00","COMIDA 3","Pan proteico + queso + proteína",[
+["18:00","COMIDA 3","Bizcocho proteico de limón",[
 "Café (opcional).",
-"70 g (2 rebanadas) pan de molde proteico High Protein Día/Aldi. Tostar.",
-"35 g queso crema sin lactosa.",
-"50 g salmón ahumado o jamón curado sin azúcar o 70 g tiras de pollo al horno."
+"1 ración de bizcocho proteico de limón.",
+"<b>Ingredientes para 3 raciones:</b> 400 g queso cottage sin lactosa; 100 g harina de almendra; 4 huevos; zumo de 1 limón exprimido; 6 g levadura en polvo; 1 trozo de piel de limón; 15 g stevia en polvo; aroma de vainilla o canela.",
+"<b>Preparación:</b> Batir y hornear a 170 °C unos 30 minutos con papel de aluminio por encima."
 ]],
-["21:00","COMIDA 4","Proteína + verdura + fruta",[
-"<b>Proteína — elegir uno:</b> 180 g pechuga de pollo/pavo o lomo magro pesado en cocido; 200 g pescado blanco pesado en cocido; 170 g lomos de salmón pesado en cocido; o 2 huevos + 200 g claras.",
-"150 g espárragos pesados en cocido (bote) o salteado de verduras.",
+["21:00","COMIDA 4","Proteína + patata/arroz/pasta + fruta",[
+"<b>Proteína — elegir una:</b> 200 g pechuga de pollo/pavo o lomo magro pesado en cocido; 250 g pescado blanco pesado en cocido; o 180 g lomos de salmón pesado en cocido.",
+"<b>Hidratos — elegir uno:</b> 150 g patata/boniato pesado en crudo o 30 g arroz/pasta sin gluten pesado en seco.",
 "5 g AOVE.",
-"250 g sandía/melón."
+"100 g piña en su jugo."
 ]]
 ]
 };
