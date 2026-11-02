@@ -142,7 +142,7 @@ button{font:inherit}
 <section id="food" class="screen">
   <div class="topbar">
     <button class="back" onclick="openSection('home')">‹</button>
-    <div><div class="page-title">Alimentación</div><div class="page-sub">07/10/2026 → 20/10/2026 · 4 días de entrenamiento</div></div>
+    <div><div class="page-title">Alimentación</div><div class="page-sub">28/10/2026 → 10/11/2026 · 4 días de entrenamiento</div></div>
   </div>
 
   <div class="day-tabs">
@@ -227,60 +227,65 @@ button{font:inherit}
 const plan = {
 training:[
 ["09:00","COMIDA 1","Desayuno · elige una opción",[
-"<b>Opción A:</b> Café (opcional); porridge con 40 g batido de proteína sin lactosa, 50 g copos de avena sin gluten, 50 g muesli crunchy de legumbres Hacendado (¡contiene gluten!), 100 g arándanos y 380 ml bebida de almendras Zero.",
+"<b>Opción A:</b> Café (opcional); 200 ml bebida de almendras Zero; 2 huevos cocidos; 100 g copos de avena sin gluten; 250 g quark 0 % o yogur natural High Protein sin lactosa; 100 g arándanos.",
 "<b>Opción B:</b> Café (opcional); 200 ml bebida de almendras Zero; 100 g (3 rebanadas) pan de molde de cereales sin gluten, tostado; 2 huevos; 100 g bonito en AOVE (escurrido); 60 g aguacate; 50 g tomate.",
 "<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
 ]],
-["14:00","COMIDA 2","Calabaza + quinoa + proteína",[
-"280 g calabaza pesada en crudo.",
-"125 g (1 tarrina) quinoa blanca-roja pesada en cocido.",
-"180 g carne roja magra, pechuga de pollo/pavo o lomo magro pesado en cocido.",
-"5 g AOVE."
+["14:00","COMIDA 2","Ensalada + quinoa/arroz/pasta + proteína",[
+"125 g ensalada 4 estaciones.",
+"50 g tomate + 60 g aguacate.",
+"125 g (1 tarrina) quinoa blanca-roja pesada en cocido o 50 g arroz/pasta sin gluten pesado en seco.",
+"180 g carne roja magra, pechuga de pollo/pavo o lomo magro pesado en cocido; o 150 g atún/salmón al natural.",
+"5 g AOVE + vinagre de manzana sin filtrar."
 ]],
-["18:00","PRE-ENTRENO","Batido + avena + arándanos",[
+["18:00","PRE-ENTRENO","Batido + fruta",[
 "40 g ISO sin lactosa.",
-"50 g copos de avena sin gluten.",
-"100 g arándanos.",
 "300 ml bebida de almendras Zero.",
+"200 g mango o papaya.",
 "<b>Suplementos:</b> 1.500 mg L-carnitina; 1 cápsula sinefrina; 600 mg NAC; 600 mg Potasio Boi-K; 1 g sal."
 ]],
-["21:00","COMIDA 4 · POST","Ensaladilla rusa con atún y mayonesa fit",[
-"380 g ensaladilla rusa congelada pesada en crudo.",
-"100 g atún al natural; 1 huevo cocido; 40 g olivas rellenas de anchoas.",
-"<b>Mayonesa fit:</b> 2 huevos cocidos, 1 cucharada mostaza Dijon, 100 g yogur natural High Protein sin lactosa, salsa picante tipo Valentina (opcional), sal y pimienta negra. Batir y listo.",
+["21:00","COMIDA 4 · POST","Salteado asiático o proteína + hidratos",[
+"<b>Opción A:</b> 400 g salteado estilo asiático de langostinos y fideos High Protein Dia (CONTIENE GLUTEN).",
+"100 g (1 unidad) gelatina sin azúcar.",
+"<b>Opción B:</b> 200 g espárragos blancos cocidos (de bote); 300 g patata/boniato pesado en crudo o 75 g arroz/pasta sin gluten pesado en seco.",
+"180 g carne roja/pollo/pavo/lomo magro pesado en crudo o 230 g filetes de dorada/merluza/tilapia pesados en crudo.",
+"5 g AOVE.",
 "<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
 ]],
 ["22:00","ANTES DE DORMIR","Yogur + fruta",[
 "120 g (1 unidad) yogur natural High Protein sin lactosa.",
-"100 g arándanos o piña.",
+"100 g arándanos o mango.",
 "Canela."
 ]]
 ],
 rest:[
 ["09:00","COMIDA 1","Desayuno · elige una opción",[
-"<b>Opción A:</b> Café (opcional); 200 ml bebida de almendras Zero; 80 g (2 unidades) wraps High Protein Lidl; 100 g tomate; 100 g aguacate; 2 huevos cocidos; 120 g tiras de pollo al horno; 30 g queso rallado mozzarella light.",
-"<b>Opción B — Porridge:</b> Café (opcional); 300 ml bebida de almendras Zero; 60 g copos de avena; 10 g psyllium en polvo; 40 g batido ISO sin lactosa; canela; 100 g frutos rojos.",
+"<b>Opción A:</b> Café (opcional); 200 ml bebida de almendras Zero; 70 g (2 rebanadas) pan de molde de cereales sin gluten Hacendado, tostado; tortilla francesa de 3 huevos; 100 g cottage 0 %; 35 g jamón curado sin azúcar; 5 g AOVE.",
+"<b>Opción B — Porridge:</b> Café (opcional); 300 ml bebida de almendras Zero; 50 g copos de avena sin gluten; 10 g psyllium en polvo; 40 g batido ISO sin lactosa; canela; 100 g mango/piña.",
 "<b>Suplementos:</b> 2 perlas Omega-3 + 1 cápsula Vitamina C."
 ]],
 ["14:00","COMIDA 2","Verduras + pasta sin gluten + proteína",[
-"180 g salteado de verduras pesado en crudo.",
-"70 g pasta sin gluten pesada en seco (180 g en cocido).",
+"200 g salteado de verduras pesado en crudo.",
+"60 g pasta sin gluten pesada en seco (150 g en cocido).",
 "180 g carne roja magra, pechuga de pollo/pavo o lomo magro pesado en cocido.",
-"30 g queso rallado Eatlean o High Protein.",
+"30 g queso mozzarella.",
 "5 g AOVE o 50 g tomate frito light 0 % azúcares.",
 "<b>Suplementos:</b> 5 g Creatina Monohidrato + 375 mg Magnesio."
 ]],
-["18:00","COMIDA 3","Bizcocho proteico de limón",[
+["18:00","COMIDA 3","Lácteo alto en proteína + fruta + frutos secos",[
 "Café (opcional).",
-"1 ración de bizcocho proteico de limón.",
-"<b>Ingredientes para 3 raciones:</b> 400 g queso cottage sin lactosa; 100 g harina de almendra; 4 huevos; zumo de 1 limón exprimido; 6 g levadura en polvo; 1 trozo de piel de limón; 15 g stevia en polvo; aroma de vainilla o canela.",
-"<b>Preparación:</b> Batir y hornear a 170 °C unos 30 minutos con papel de aluminio por encima."
+"250 g quark 0 % o yogur natural High Protein sin lactosa o skyr natural.",
+"100 g arándanos.",
+"20 g nueces/almendras o crema de cacahuete 100 %.",
+"Canela."
 ]],
-["21:00","COMIDA 4","Proteína + patata/arroz/pasta + fruta",[
-"<b>Proteína — elegir una:</b> 200 g pechuga de pollo/pavo o lomo magro pesado en cocido; 250 g pescado blanco pesado en cocido; o 180 g lomos de salmón pesado en cocido.",
-"<b>Hidratos — elegir uno:</b> 150 g patata/boniato pesado en crudo o 30 g arroz/pasta sin gluten pesado en seco.",
-"5 g AOVE.",
-"100 g piña en su jugo."
+["21:00","COMIDA 4","Ensalada + proteína + hidratos",[
+"125 g ensalada 4 estaciones.",
+"60 g tomate + 60 g aguacate.",
+"180 g pechuga de pollo/pavo o lomo magro pesado en cocido; o 220 g pescado blanco pesado en cocido; o 150 g lomos de salmón pesado en cocido.",
+"150 g patata/boniato pesado en crudo o 30 g arroz/pasta sin gluten pesado en seco.",
+"5 g AOVE + vinagre de manzana (opcional).",
+"100 g (1 unidad) gelatina sin azúcar."
 ]]
 ]
 };
